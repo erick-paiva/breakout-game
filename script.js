@@ -56,9 +56,9 @@ function stopMovement() {
 }
 
 function iniciarodada(e) {
-  tocarMusica("star_game.wav");
   aviso = document.querySelector(".iniciar_partida");
   if (e.code == "Enter") {
+    tocarMusica("star_game.wav");
     aviso.style = "display: none";
     start = true;
   }
