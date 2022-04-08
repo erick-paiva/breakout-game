@@ -1,0 +1,72 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+#myCanvas {
+  background: rgba(0, 0, 0, 0.815);
+  display: block;
+}
+
+.direito,
+.esquerdo {
+  cursor: pointer;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  bottom: 80px;
+  background: yellow;
+  border-radius: 100%;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: #0019d7;
+}
+
+.direito {
+  right: 100px;
+}
+.direito:active {
+  background: red;
+}
+.esquerdo {
+  left: 100px;
+}
+.esquerdo:active {
+  background: red;
+}
+
+.iniciar_partida {
+  display: none;
+  position: absolute;
+  top: 150px;
+  border-radius: 20px;
+  font-size: 25px;
+  width: 400px;
+  color: #0019d7;
+  font-weight: bold;
+  height: 100px;
+  background: linear-gradient(0, #f93a3a, #dfc404, azure);
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 1em gold;
+}
+
+@media (min-width: 800px) {
+  .iniciar_partida {
+    display: flex;
+  }
+  .direito,
+  .esquerdo {
+    display: none;
+  }
+}
