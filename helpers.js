@@ -3,6 +3,9 @@ function perdeu() {
   botaoDireito.style = "display: none";
   botaoEsquerdo.style = "display: none";
 
+  start = true
+  pause = true
+
   game_over_text.style = "display: flex";
 
   tocarMusica("game_over.wav");
@@ -31,6 +34,8 @@ function vitoria() {
 const button = document.querySelector(".jogar_novamente");
 button.addEventListener("click", function () {
 //   tocarMusica("star_game.wav");
+    // start = false
+    // pause = true
 
   setTimeout(() => {
     

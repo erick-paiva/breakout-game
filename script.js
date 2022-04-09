@@ -20,7 +20,7 @@ let brickRowCount = 30;
 let brickOffsetTop = 30;
 let brickOffsetLeft = 0;
 let start = false;
-
+let pause = false;
 let score = 0;
 let lives = 3;
 
@@ -59,7 +59,7 @@ function stopMovement() {
 }
 
 function iniciarodada(e) {
-  if (e.code == "Enter" && start == false) {
+  if (e.code == "Enter" && start == false && pause == false) {
     if (canvas.width <= 800) {
       botaoDireito.style.display = "flex";
       botaoEsquerdo.style.display = "flex";
@@ -186,6 +186,7 @@ function draw() {
         start = false;
         if (!lives) {
           perdeu();
+  
         } else {
           x = canvas.width / 2;
           y = canvas.height - 30;
