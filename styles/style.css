@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0;
   font-family: Game;
+  overflow-y: none;
 }
 @font-face {
   font-family: "Game";
