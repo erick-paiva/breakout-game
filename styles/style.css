@@ -20,7 +20,9 @@ body {
 
 #myCanvas {
   background: rgba(0, 0, 0, 0.815);
-  display: block;
+  /* display: block; */
+  height: 100vh;
+  width: 100vw;
 }
 
 .direito,
@@ -60,19 +62,20 @@ body {
 }
 
 .direito {
-  right: 100px;
+  right: 10%;
 }
 .direito:active {
   background: red;
 }
 .esquerdo {
-  left: 100px;
+  left: 10%;
 }
 .esquerdo:active {
   background: red;
 }
 
 .iniciar_partida {
+  /* display: flex; */
   display: none;
   text-align: center;
   position: absolute;
@@ -91,7 +94,8 @@ body {
   box-shadow: 0 0 1em gold;
 }
 .iniciar_partida_mobile{
-  display: flex;
+  /* display: flex; */
+  display: none;
   text-align: center;
   position: absolute;
   top: 50%;
@@ -99,7 +103,7 @@ body {
   border-radius: 20px;
   font-size: 1.3rem;
   letter-spacing: 2px;
-  width: 400px;
+  width: 270px;
   color: #00178b;
   font-weight: bold;
   height: 100px;
@@ -111,7 +115,7 @@ body {
 .iniciar_partida_button {
   background: red;
   height: 50px;
-  width: 80%;
+  width: 90%;
   letter-spacing: 3px;
   border-radius: 10px;
   color: #00309f;
@@ -150,16 +154,16 @@ body {
 
 
 @media (min-width: 800px) {
-  .iniciar_partida {
-    display: none;
-  }
-  .iniciar_partida_mobile{
+  /* .iniciar_partida {
     display: flex;
+  } */
+  /* .iniciar_partida_mobile{
+    display: none;
 
-  }
+  } */
   .direito,
   .esquerdo {
-    display: flex;
+    display: none;
   }
 }
 .direito img, .esquerdo img{

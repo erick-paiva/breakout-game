@@ -2,8 +2,10 @@ function perdeu() {
  
   botaoDireito.style = "display: none";
   botaoEsquerdo.style = "display: none";
+  botaoIniciarPartida.style.display = "none";
+  botaoIniciarPartida_desktop.style.display = "none";
 
-  start = true
+  // start = true
   pause = true
 
   game_over_text.style = "display: flex";
@@ -39,3 +41,16 @@ button.addEventListener("click", function () {
     location.reload();
   }, 1000);
 });
+
+function exibir_botao_iniciar(){
+
+  if (canvas.width <= 800) {
+    botaoIniciarPartida.style.display = "flex";
+  }else{
+    
+    botaoIniciarPartida_desktop.style.display = "flex";
+  }
+}
+exibir_botao_iniciar()
+
+

@@ -1,6 +1,6 @@
 let canvas = document.getElementById("myCanvas");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.width = window.screen.width;
+canvas.height = window.screen.height;
 let ctx = canvas.getContext("2d");
 let ballRadius = 10;
 let x = canvas.width / 2;
@@ -39,6 +39,7 @@ function stopMovement() {
 botaoDireito = document.querySelector(".direito");
 botaoEsquerdo = document.querySelector(".esquerdo");
 botaoIniciarPartida = document.querySelector(".iniciar_partida_mobile");
+botaoIniciarPartida_desktop = document.querySelector(".iniciar_partida");
 game_over_text = document.querySelector(".game_over");
 
 document.addEventListener("keydown", keyDownHandler, false);
@@ -61,11 +62,11 @@ botaoIniciarPartida.addEventListener(
 
 game_over_text.style = "display: none";
 
-
+console.log(canvas.width);
 
 function iniciarodada(e) {
   if (e.code == "Enter" && start == false && pause == false) {
-    if (canvas.width <= 1000) {
+    if (canvas.width <= 800) {
       botaoDireito.style.display = "flex";
       botaoEsquerdo.style.display = "flex";
     }
@@ -191,10 +192,18 @@ function draw() {
       if (x > paddleX && x < paddleX + paddleWidth) {
         dy = -dy;
       } else {
-        lives--;
+        
         start = false;
+        if (lives > 0) {
+          lives--;
+          // botaoIniciarPartida.style.display = "flex";
+          exibir_botao_iniciar()
+        }
         if (!lives) {
+         
           perdeu();
+          start = false;
+
   
         } else {
           x = canvas.width / 2;
