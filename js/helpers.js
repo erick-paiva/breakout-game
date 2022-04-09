@@ -33,9 +33,6 @@ function vitoria() {
 
 const button = document.querySelector(".jogar_novamente");
 button.addEventListener("click", function () {
-//   tocarMusica("star_game.wav");
-    // start = false
-    // pause = true
 
   setTimeout(() => {
     
