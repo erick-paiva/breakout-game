@@ -159,8 +159,15 @@ body {
   }
   .direito,
   .esquerdo {
-    display: none;
+    display: flex;
   }
+}
+.direito img, .esquerdo img{
+  height: 50px;
+  width: 50px;
+}
+.direito img{
+  transform: scaleX(-1);
 }
 
 .vitoria {

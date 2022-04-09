@@ -45,10 +45,14 @@ document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 document.addEventListener("keypress", iniciarodada, false);
 
-botaoDireito.addEventListener("mousedown", keyDownHandler, false);
-botaoDireito.addEventListener("mouseup", stopMovement, false);
-botaoEsquerdo.addEventListener("mousedown", keyDownHandler, false);
-botaoEsquerdo.addEventListener("mouseup", stopMovement, false);
+// enquanto o usuario continuar clicando no botao esquerdo ou direito com o touch
+// a bola ira se mover para a esquerda ou direita
+botaoDireito.addEventListener("touchstart", (() => keyDownHandler({code:"ArrowRight" })))
+botaoDireito.addEventListener("touchend", stopMovement)
+botaoEsquerdo.addEventListener("touchstart", (() => keyDownHandler({code:"ArrowLeft" })))
+botaoEsquerdo.addEventListener("touchend", stopMovement)
+
+
 botaoIniciarPartida.addEventListener(
   "click",
   () => iniciarodada({ code: "Enter" }),
@@ -61,7 +65,6 @@ game_over_text.style = "display: none";
 
 function iniciarodada(e) {
   if (e.code == "Enter" && start == false && pause == false) {
-    console.log(canvas.width)
     if (canvas.width <= 1000) {
       botaoDireito.style.display = "flex";
       botaoEsquerdo.style.display = "flex";
@@ -75,15 +78,18 @@ function iniciarodada(e) {
 }
 
 function keyDownHandler(e) {
-  // console.log(e)
-  if (e.code == "ArrowRight" || e.srcElement.className == "direito") {
+  
+  if (e.code == "ArrowRight") {
+  
     rightPressed = true;
-    // leftPressed = false;
+  
+
+    leftPressed = false;
   }
 
-  if (e.code == "ArrowLeft" || e.srcElement.className == "esquerdo") {
+  if (e.code == "ArrowLeft") {
     leftPressed = true;
-    // rightPressed = false;
+    rightPressed = false;
   }
 }
 function keyUpHandler(e) {
