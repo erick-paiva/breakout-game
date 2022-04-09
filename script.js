@@ -1,30 +1,24 @@
-
 let canvas = document.getElementById("myCanvas");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-// console.log(canvas.width)
 let ctx = canvas.getContext("2d");
 let ballRadius = 10;
 let x = canvas.width / 2;
 let y = canvas.height - 30;
-let dx = 3;
-let dy = -3;
+let dx = 4;
+let dy = -4;
 let paddleHeight = 10;
 let paddleWidth = 90;
 let paddleX = (canvas.width - paddleWidth) / 2;
 let rightPressed = false;
 let leftPressed = false;
-let brickColumnCount = 1; //5
-let brickWidth = canvas.width / 40
+let brickColumnCount = 5; //5
+let brickWidth = (canvas.width - 30) / 30;
 let brickHeight = 20;
 let brickPadding = 1;
-let brickRowCount = 1 //38
+let brickRowCount = 30;
 let brickOffsetTop = 30;
-// let brickOffsetLeft = (brickWidth *  0.6) 
-// let brickOffsetLeft = brickWidth * 0.5
-// let brickOffsetLeft = brickWidth * 0.5
-let brickOffsetLeft = 40
-
+let brickOffsetLeft = 0;
 let start = false;
 
 let score = 0;
@@ -41,6 +35,7 @@ for (let c = 0; c < brickColumnCount; c++) {
 botaoDireito = document.querySelector(".direito");
 botaoEsquerdo = document.querySelector(".esquerdo");
 botaoIniciarPartida = document.querySelector(".iniciar_partida_mobile");
+game_over_text = document.querySelector(".game_over");
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
@@ -50,9 +45,13 @@ botaoDireito.addEventListener("mousedown", keyDownHandler, false);
 botaoDireito.addEventListener("mouseup", stopMovement, false);
 botaoEsquerdo.addEventListener("mousedown", keyDownHandler, false);
 botaoEsquerdo.addEventListener("mouseup", stopMovement, false);
-botaoIniciarPartida.addEventListener("click", (() => iniciarodada({code:"Enter"})) , false)
+botaoIniciarPartida.addEventListener(
+  "click",
+  () => iniciarodada({ code: "Enter" }),
+  false
+);
 
-
+game_over_text.style = "display: none";
 
 function stopMovement() {
   rightPressed = false;
@@ -61,9 +60,9 @@ function stopMovement() {
 
 function iniciarodada(e) {
   if (e.code == "Enter" && start == false) {
-    if (canvas.width <= 800 ) {
-      botaoDireito.style.display = "flex"
-      botaoEsquerdo.style.display = "flex"
+    if (canvas.width <= 800) {
+      botaoDireito.style.display = "flex";
+      botaoEsquerdo.style.display = "flex";
     }
     aviso = document.querySelector(".iniciar_partida");
     botaoIniciarPartida.style.display = "none";
@@ -74,7 +73,6 @@ function iniciarodada(e) {
 }
 
 function keyDownHandler(e) {
-  console.log(e)
   if (e.code == "ArrowRight" || e.srcElement.className == "direito") {
     rightPressed = true;
     leftPressed = false;
@@ -109,14 +107,12 @@ function collisionDetection() {
           y > b.y &&
           y < b.y + brickHeight
         ) {
-          // console.log("colidiu")
-          tocarMusica("toca_bola.mp3")
+          tocarMusica("toca_bola.mp3");
           dy = -dy;
           b.status = 0;
           score++;
           if (score == brickRowCount * brickColumnCount) {
-            vitoria()
-
+            vitoria();
           }
         }
       }
@@ -128,8 +124,7 @@ function drawBall() {
   ctx.beginPath();
   ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
   ctx.fillStyle = "white";
-  // ctx.fillStyle = "z-index: 2";
-  ctx.globalCompositeOperation = 'destination-over'
+  ctx.globalCompositeOperation = "destination-over";
   ctx.fill();
   ctx.closePath();
 }
@@ -190,8 +185,7 @@ function draw() {
         lives--;
         start = false;
         if (!lives) {
-          perdeu()
-
+          perdeu();
         } else {
           x = canvas.width / 2;
           y = canvas.height - 30;
