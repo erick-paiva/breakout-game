@@ -31,6 +31,10 @@ for (let c = 0; c < brickColumnCount; c++) {
     bricks[c][r] = { x: 0, y: 0, status: 1 };
   }
 }
+function stopMovement() {
+  rightPressed = false;
+  leftPressed = false;
+}
 
 botaoDireito = document.querySelector(".direito");
 botaoEsquerdo = document.querySelector(".esquerdo");
@@ -53,14 +57,12 @@ botaoIniciarPartida.addEventListener(
 
 game_over_text.style = "display: none";
 
-function stopMovement() {
-  rightPressed = false;
-  leftPressed = false;
-}
+
 
 function iniciarodada(e) {
   if (e.code == "Enter" && start == false && pause == false) {
-    if (canvas.width <= 800) {
+    console.log(canvas.width)
+    if (canvas.width <= 1000) {
       botaoDireito.style.display = "flex";
       botaoEsquerdo.style.display = "flex";
     }
@@ -73,14 +75,15 @@ function iniciarodada(e) {
 }
 
 function keyDownHandler(e) {
+  // console.log(e)
   if (e.code == "ArrowRight" || e.srcElement.className == "direito") {
     rightPressed = true;
-    leftPressed = false;
+    // leftPressed = false;
   }
 
   if (e.code == "ArrowLeft" || e.srcElement.className == "esquerdo") {
     leftPressed = true;
-    rightPressed = false;
+    // rightPressed = false;
   }
 }
 function keyUpHandler(e) {
