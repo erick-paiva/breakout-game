@@ -14,16 +14,16 @@ let paddleWidth = 90;
 let paddleX = (canvas.width - paddleWidth) / 2;
 let rightPressed = false;
 let leftPressed = false;
-let brickColumnCount = 5;
+let brickColumnCount = 1; //5
 let brickWidth = canvas.width / 40
 let brickHeight = 20;
 let brickPadding = 1;
-let brickRowCount = 38
+let brickRowCount = 1 //38
 let brickOffsetTop = 30;
 // let brickOffsetLeft = (brickWidth *  0.6) 
 // let brickOffsetLeft = brickWidth * 0.5
-let brickOffsetLeft = brickWidth * 0.5
-
+// let brickOffsetLeft = brickWidth * 0.5
+let brickOffsetLeft = 40
 
 let start = false;
 
@@ -40,6 +40,7 @@ for (let c = 0; c < brickColumnCount; c++) {
 
 botaoDireito = document.querySelector(".direito");
 botaoEsquerdo = document.querySelector(".esquerdo");
+botaoIniciarPartida = document.querySelector(".iniciar_partida_mobile");
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
@@ -49,6 +50,9 @@ botaoDireito.addEventListener("mousedown", keyDownHandler, false);
 botaoDireito.addEventListener("mouseup", stopMovement, false);
 botaoEsquerdo.addEventListener("mousedown", keyDownHandler, false);
 botaoEsquerdo.addEventListener("mouseup", stopMovement, false);
+botaoIniciarPartida.addEventListener("click", (() => iniciarodada({code:"Enter"})) , false)
+
+
 
 function stopMovement() {
   rightPressed = false;
@@ -56,8 +60,13 @@ function stopMovement() {
 }
 
 function iniciarodada(e) {
-  aviso = document.querySelector(".iniciar_partida");
-  if (e.code == "Enter") {
+  if (e.code == "Enter" && start == false) {
+    if (canvas.width <= 800 ) {
+      botaoDireito.style.display = "flex"
+      botaoEsquerdo.style.display = "flex"
+    }
+    aviso = document.querySelector(".iniciar_partida");
+    botaoIniciarPartida.style.display = "none";
     tocarMusica("star_game.wav");
     aviso.style = "display: none";
     start = true;
@@ -106,8 +115,8 @@ function collisionDetection() {
           b.status = 0;
           score++;
           if (score == brickRowCount * brickColumnCount) {
-            alert("VOCÊ GANHOU!");
-            document.location.reload();
+            vitoria()
+
           }
         }
       }

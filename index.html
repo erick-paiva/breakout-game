@@ -8,22 +8,25 @@
   </head>
   <body>
     <div class="game_over">
-      <video class="game_over_video" autoplay loop>
-        <source src="./assets/game_over.mp4" type="video/mp4">
-      </video>
-      <button class="jogar_novamente" >
-        <!-- <a href="index.html">
-          JOGAR NOVAMENTE
-        </a>
-         -->
-  
-          JOGAR NOVAMENTE
-       
-      </button>
-    </div> 
+      <img class="game_over_image" src="./assets/game_over.gif" />
+      <button class="jogar_novamente">JOGAR NOVAMENTE</button>
+    </div>
     <canvas id="myCanvas"></canvas>
 
-    <div class="iniciar_partida" >Para Iniciar a partida aperte enter</div>
+    <div class="iniciar_partida">Para Iniciar a partida aperte enter</div>
+    <div class="iniciar_partida_mobile">
+      <button class="iniciar_partida_button">
+        Iniciar Partida
+      </button>
+    </div>
+    <div class="vitoria">
+      <h2>PARABÉNS VOCÊ GANHOU !!!</h2>
+      <video loop>
+        <source src="./assets/vitoria.mp4" type="video/mp4" />
+      </video>
+
+      <button class="jogar_novamente_win">JOGAR NOVAMENTE</button>
+    </div>
     <span class="esquerdo">Esquerdo</span>
     <span class="direito">direito</span>
   </body>

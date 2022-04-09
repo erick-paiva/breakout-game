@@ -1,7 +1,13 @@
 * {
   padding: 0;
   margin: 0;
+  font-family: Game;
 }
+@font-face {
+  font-family: "Game";
+  src: url("../font_game/game_font.ttf");
+}
+
 body {
   display: flex;
   align-items: center;
@@ -21,15 +27,34 @@ body {
   position: absolute;
   width: 100px;
   height: 100px;
-  display: flex;
+  /* display: flex; */
+  display: none;
   bottom: 80px;
-  background: yellow;
+  background: #dfc404;
   border-radius: 100%;
   align-items: center;
   justify-content: center;
   font-size: 14px;
   font-weight: bold;
-  color: #0019d7;
+  color: #00178b;
+  box-shadow: 0px 6px 4px 4px brown;
+}
+.direito:active,
+.esquerdo:active {
+  animation: efeito_click 0.5s ease-in-out;
+  transition: all 0.5s;
+  transform: translateY(5px);
+}
+
+@keyframes efeito_click {
+  to{
+    transform: scale(1);
+    transform: translateY(0);
+  }
+  from{
+    transform: scale(1);
+    transform: translateY(-5px);
+  }
 }
 
 .direito {
@@ -47,12 +72,15 @@ body {
 
 .iniciar_partida {
   display: none;
+  text-align: center;
   position: absolute;
   top: 150px;
+  padding: 10px;
   border-radius: 20px;
-  font-size: 25px;
+  font-size: 1.3rem;
+  letter-spacing: 2px;
   width: 400px;
-  color: #0019d7;
+  color: #00178b;
   font-weight: bold;
   height: 100px;
   background: linear-gradient(0, #f93a3a, #dfc404, azure);
@@ -60,13 +88,126 @@ body {
   justify-content: center;
   box-shadow: 0 0 1em gold;
 }
+.iniciar_partida_mobile{
+  display: flex;
+  text-align: center;
+  position: absolute;
+  top: 150px;
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+  width: 400px;
+  color: #00178b;
+  font-weight: bold;
+  height: 100px;
+  background: linear-gradient(0, #f93a3a, #dfc404, azure);
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 1em gold;
+}
+.iniciar_partida_button {
+  background: red;
+  height: 50px;
+  width: 80%;
+  letter-spacing: 3px;
+  border-radius: 10px;
+  color: #00309f;
+  border: none;
+  font-weight: bold;
+
+}
+.iniciar_partida_button:hover {
+  background: #00309f;
+  color: #f93a3a;
+  transition: all 0.5s;
+  animation: rodar_button_start 0.5s ease-in-out;
+}
+.iniciar_partida_button:active {
+  background: #f93a3a;
+  color: #00309f;
+  animation: rodar_button_start 0.5s ease-in-out;
+}
+@keyframes rodar_button_start{
+  0%{
+    transform: rotateX(180deg);
+  }
+  25%{
+    transform: rotateX(360deg);
+  }
+  50%{
+    transform: rotateX(180deg);
+  }
+  75%{
+    transform: rotateX(360deg);
+  }
+  100%{
+    transform: rotateX(0deg);
+  }
+}
+
 
 @media (min-width: 800px) {
   .iniciar_partida {
     display: flex;
   }
+  .iniciar_partida_mobile{
+    display: none;
+
+  }
   .direito,
   .esquerdo {
     display: none;
   }
+}
+
+.vitoria {
+  display: none;
+  position: absolute;
+  top: 14%;
+  height: 390px;
+  width: 400px;
+  /* display: flex; */
+  background: red;
+  align-items: center;
+  color: blue;
+  padding: 20px 20px;
+  text-align: center;
+  letter-spacing: 5px;
+  box-sizing: border-box;
+  justify-content: space-between;
+  border-radius: 15px;
+  box-shadow: 7px 11px #040000b5;
+  flex-direction: column;
+  animation: trancicao_decima_para_baixo 2s ease-in-out;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition-duration: 0.5s;
+}
+.vitoria h2 {
+  font-size: 1.5rem;
+}
+.vitoria video{
+  height: 60%;
+}
+
+.jogar_novamente_win{
+  width: 80%;
+  height: 50px;
+  background: #00178b;
+  border-radius: 8px;
+  color: var(--yellow);
+  font-weight: bold;
+  letter-spacing: 4px;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition-duration: 0.5s;
+  border: none;
+  cursor: pointer;
+}
+.jogar_novamente_win:hover{
+  transform: translateY(-5px);
+  background: #ffd900;
+  color: #00178b;
+}
+.jogar_novamente_win:active{
+  transform: translateY(5px);
 }
